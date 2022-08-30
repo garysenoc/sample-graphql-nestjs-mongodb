@@ -1,0 +1,47 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Student {
+  id: String!
+  firstName: String!
+  lastName: String!
+}
+
+type LessonType {
+  id: ID!
+  name: String!
+  startDate: String!
+  endDate: String!
+  students: [Student!]!
+}
+
+type Query {
+  lesson(id: String!): LessonType!
+  lessons: [LessonType!]!
+  student(id: String!): Student!
+  students: [Student!]!
+}
+
+type Mutation {
+  createLesson(createLessonInput: CreateLessonInput!): LessonType!
+  assignStudentsToLesson(assignStudentInput: AssignStudentsToLessonInput!): LessonType!
+  createStudent(createStudentInput: CreateStudentInput!): Student!
+}
+
+input CreateLessonInput {
+  name: String!
+  startDate: String!
+  endDate: String!
+  students: [ID!] = []
+}
+
+input AssignStudentsToLessonInput {
+  lessonId: ID!
+  studentIds: [ID!]!
+}
+
+input CreateStudentInput {
+  firstName: String!
+  lastName: String!
+}
